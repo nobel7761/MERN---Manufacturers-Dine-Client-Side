@@ -50,9 +50,9 @@ const NavbarTop = () => {
               />
               <div>
                 <p>
-                  <strong>( 123) 456 -7890</strong>
+                  <strong>+8801521320912</strong>
                 </p>
-                <p>info@example.com</p>
+                <p>habiburnobel@gmail.com</p>
               </div>
             </div>
           </div>
