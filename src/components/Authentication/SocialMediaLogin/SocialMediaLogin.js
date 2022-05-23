@@ -33,7 +33,7 @@ const SocialMediaLogin = () => {
     if (user) {
       navigate("/");
     }
-  }, [user]);
+  }, [user, navigate]);
 
   const googleSignIn = async () => {
     await signInWithGoogle();

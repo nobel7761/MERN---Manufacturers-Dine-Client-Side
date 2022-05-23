@@ -2,21 +2,13 @@ import React from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
 import auth from "./../../../firebase.init";
-import {
-  useAuthState,
-  useCreateUserWithEmailAndPassword,
-  useSendEmailVerification,
-} from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import LoadingSpinner from "./../../Shared/LoadingSpinner/LoadingSpinner";
-import { toast } from "react-toastify";
 import SocialMediaLogin from "./../SocialMediaLogin/SocialMediaLogin";
 
 const Register = () => {
   const [createUserWithEmailAndPassword, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-  const [sendEmailVerification, sending, error1] =
-    useSendEmailVerification(auth);
-  const [user] = useAuthState(auth);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,18 +22,13 @@ const Register = () => {
   };
 
   let displayError;
-  if (error || error1) {
+  if (error) {
     displayError = (
-      <p className="text-red-500 text-center">
-        {" "}
-        {error?.message} {error1?.message}
-      </p>
+      <p className="text-red-500 text-center"> {error?.message}</p>
     );
   }
-  // if (user) {
-  //   toast("Verification Email Sent!");
-  // }
-  if (loading || sending) {
+
+  if (loading) {
     <LoadingSpinner></LoadingSpinner>;
   }
 
