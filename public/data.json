@@ -3,169 +3,63 @@
     "picture": "https://www.pngall.com/wp-content/uploads/5/Samsung-TV-PNG.png",
     "name": "SAMSUNG TV",
     "description": "Samsung 32N4010 is a 32 inch Basic HD LED Television from the brand Sa...",
-    "price": 348,
-    "quantity": 53,
-    "supplier": "BLANET",
-    "sold": 15
+    "price": 500,
+    "min_quantity": 50,
+    "available_quantity": 500,
+    "sold": 0
   },
-
   {
-    "picture": "https://www.startech.com.bd/image/cache/catalog/television/xiaomi/mi-4...",
+    "picture": "https://www.pngall.com/wp-content/uploads/5/Samsung-TV-PNG.png",
     "name": "Mi 4S 55 INCH 4K ANDROID TV",
     "description": "The new Xiaomi Mi TV 4S V53R 55 4K UltraHD Smart TV Android OS LED is ...",
-    "price": 700,
-    "quantity": 31,
-    "supplier": "PROXSOFT",
-    "sold": 2
+    "price": 500,
+    "min_quantity": 50,
+    "available_quantity": 500,
+    "sold": 0
   },
-
   {
-    "picture": "https://www.startech.com.bd/image/cache/catalog/television/xiaomi/mi-p...",
+    "picture": "https://www.pngall.com/wp-content/uploads/5/Samsung-TV-PNG.png",
     "name": "Xiaomi Mi P1 Android 4K TV",
     "description": "Xiaomi Mi P1 L43M6-6AEU Smart Android TV comes with a 43 4K UHD (3,840...",
-    "price": 550,
-    "quantity": 52,
-    "supplier": "ISOTERNIA",
-    "sold": 17
+    "price": 500,
+    "min_quantity": 50,
+    "available_quantity": 500,
+    "sold": 0
   },
-
   {
-    "picture": "https://www.startech.com.bd/image/cache/catalog/brand-pc/dell/3420/Unt...",
+    "picture": "https://www.pngall.com/wp-content/uploads/5/Samsung-TV-PNG.png",
     "name": "Dell 3420 Workstation",
     "description": "Intel Xeon Processor E3-1240 v5 (Quad Core HT 3.5Ghz, 3.9Ghz Turbo, 8M...",
-    "price": 560,
-    "quantity": 43,
-    "supplier": "LUDAK",
-    "sold": 13
+    "price": 500,
+    "min_quantity": 50,
+    "available_quantity": 500,
+    "sold": 0
   },
-
   {
-    "picture": "https://www.startech.com.bd/image/cache/catalog/Fax/brother%20/28-500x...",
+    "picture": "https://www.pngall.com/wp-content/uploads/5/Samsung-TV-PNG.png",
     "name": "Brother Laser Fax",
     "description": "Brother FAX-2840 High Speed Mono Laser Fax Machine. 33.6K bps modem, a...",
-    "price": 786,
-    "quantity": 34,
-    "supplier": "CINCYR",
-    "sold": 10
+    "price": 500,
+    "min_quantity": 50,
+    "available_quantity": 500,
+    "sold": 0
   },
-
   {
-    "picture": "https://www.startech.com.bd/image/cache/catalog/television/sony/kd-65x...",
+    "picture": "https://www.pngall.com/wp-content/uploads/5/Samsung-TV-PNG.png",
     "name": "Sony KD-65x7500H 65 4K ",
     "description": "Sony KD-65x7500H HD Smart Android LED TV comes with 65 Slim 4K Ultra H...",
-    "price": 1200,
-    "quantity": 24,
-    "supplier": "GORGANIC",
-    "sold": 7
+    "price": 500,
+    "min_quantity": 50,
+    "available_quantity": 500,
+    "sold": 0
   },
-
   {
-    "picture": "https://www.startech.com.bd/image/cache/catalog/television/sony/65x900...",
+    "picture": "https://www.pngall.com/wp-content/uploads/5/Samsung-TV-PNG.png",
     "name": "Sony Bravia 65X9000H 65 Inch",
     "description": "Sony Bravia 65X9000H 65 Inch 4K Ultra HD Smart Android LED TV is 2020 ...",
-    "price": 1508,
-    "quantity": 29,
-    "supplier": "KIDGREASE",
-    "sold": 12
-  },
-
-  {
-    "picture": "https://i1.rgstatic.net/ii/profile.image/1085637499322373-163584755887...",
-    "name": "Redmi K20 Pro",
-    "quantity": 250,
-    "supplier": "Shumash Tech",
-    "price": 450,
-    "sold": 0,
-    "email": "habiburnobel@gmail.com"
-  },
-
-  {
-    "picture": "https://i1.rgstatic.net/ii/profile.image/1085637499322373-163584755887...",
-    "name": "Realme X2",
-    "quantity": 54,
-    "supplier": "Jack & Gadget",
-    "price": 350,
-    "sold": 0,
-    "email": "habibur15-7761@diu.edu.bd"
-  },
-
-  {
-    "picture": "https://i1.rgstatic.net/ii/profile.image/1085637499322373-163584755887...",
-    "name": "Redmi Note 11",
-    "quantity": 195,
-    "supplier": "RIO International",
-    "price": 200,
-    "sold": 0,
-    "email": "habiburnobel@gmail.com"
-  },
-
-  {
-    "picture": "https://i1.rgstatic.net/ii/profile.image/1085637499322373-163584755887...",
-    "name": "DELL Inspiron 15",
-    "quantity": 57,
-    "supplier": "Ryans Computer",
-    "price": 850,
-    "sold": 0,
-    "email": "habiburnobel@gmail.com"
-  },
-
-  {
-    "picture": "https://i.ibb.co/bm7brnt/oil.jpg",
-    "name": "Ayman Sadik",
-    "quantity": 20,
-    "supplier": "Sadman Sadik",
-    "price": 4,
-    "sold": 0,
-    "email": "alexakash53@gmail.com"
-  },
-
-  {
-    "picture": "https://i.ibb.co/bm7brnt/oil.jpg",
-    "name": "Khalid Farhan",
-    "quantity": 4,
-    "supplier": "Sadman Sadik",
-    "price": 4,
-    "sold": 0,
-    "email": "alexakash53@gmail.com"
-  },
-
-  {
-    "picture": "vymuxodyjo@mailinator.com",
-    "name": "wequcohyw@mailinator.com",
-    "quantity": 36,
-    "supplier": "benaj@mailinator.com",
-    "price": 927,
-    "sold": 0,
-    "email": "samraatjahangir@gmail.com"
-  },
-
-  {
-    "picture": "doqe@mailinator.com",
-    "name": "fako@mailinator.com",
-    "quantity": 703,
-    "supplier": "coryq@mailinator.com",
-    "price": 603,
-    "sold": 0,
-    "email": "samraatjahangir@gmail.com"
-  },
-
-  {
-    "picture": "https://i1.rgstatic.net/ii/profile.image/1085637499322373-163584755887...",
-    "name": "XIAOMI POCO F3 Pro",
-    "quantity": 26,
-    "supplier": "NOKIB",
-    "price": 350,
-    "sold": 0,
-    "email": "habiburnobel@gmail.com"
-  },
-
-  {
-    "picture": "jkhkk",
-    "name": "ENGINE DIAGNOSTIC",
-    "quantity": 567,
-    "supplier": "65",
-    "price": 657,
-    "sold": 0,
-    "email": "hello@gmail.com"
+    "price": 500,
+    "min_quantity": 50,
+    "available_quantity": 500,
+    "sold": 0
   }
 ]

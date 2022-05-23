@@ -7,6 +7,7 @@ import Login from './Authentication/Login/Login';
 import Register from './Authentication/Register/Register';
 import Footer from './Shared/Footer/Footer';
 import Blogs from './Pages/Blogs/Blogs';
+import NotFound from './Pages/NotFound/NotFound';
 
 const MainComponent = () => {
     return (
@@ -21,6 +22,12 @@ const MainComponent = () => {
 
                 <Route path='/login' element={<Login></Login>}></Route>
                 <Route path='/register' element={<Register></Register>}></Route>
+
+
+
+
+
+                <Route path='*' element={<NotFound></NotFound>}></Route>
 
 
             </Routes>
