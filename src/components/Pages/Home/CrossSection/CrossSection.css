@@ -1,0 +1,42 @@
+.main-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: absolute;
+    top: -70px;
+    z-index: 1;
+    left: 3%;
+}
+
+.cross-section {
+    padding: 50px;
+}
+
+.cross-section p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cross-section small {
+    font-size: 16px;
+}
+
+.yellow-section {
+    background-image: url(https://demo.zozothemes.com/induzy/wp-content/uploads/sites/15/2021/07/feature-1.jpg?id=3589) !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.black-section {
+    background-image: url(https://demo.zozothemes.com/induzy/wp-content/uploads/sites/15/2021/07/feature-2.jpg?id=3590) !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.gray-section {
+    background-image: url(https://demo.zozothemes.com/induzy/wp-content/uploads/sites/15/2021/07/feature-3.jpg?id=3591) !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

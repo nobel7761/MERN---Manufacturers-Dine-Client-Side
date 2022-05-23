@@ -1,0 +1,48 @@
+.bs-section {
+    background-image: url('../../../../images/background/bg-4.jpg') !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    background-color: rgba(0, 0, 0, 0.8);
+    background-blend-mode: overlay;
+    padding: 50px;
+}
+
+.counter {
+    margin-top: 150px;
+}
+
+.counter p {
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+}
+
+.counter-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 50px;
+}
+
+.counter-section p {
+    text-align: center;
+    color: #28AAA9;
+}
+
+.counter-number {
+    font-size: 50px;
+    font-weight: bolder;
+    color: white;
+}
+
+.icon {
+    font-size: 80px;
+    color: #28AAA9;
+}
+
+.counter h1 {
+    font-size: 46px;
+    font-weight: bolder;
+    color: #28AAA9;
+}
