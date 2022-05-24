@@ -2,33 +2,45 @@ import React from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
 import auth from "./../../../firebase.init";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import LoadingSpinner from "./../../Shared/LoadingSpinner/LoadingSpinner";
 import SocialMediaLogin from "./../SocialMediaLogin/SocialMediaLogin";
 
 const Register = () => {
   const [createUserWithEmailAndPassword, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, error1] = useUpdateProfile(auth);
+  const [user] = useAuthState(auth);
+  console.log(user);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // const name = event.target.name.value;
+    const displayName = event.target.displayName.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     event.target.reset();
+    // setDisplayName(displayName);
 
     await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName });
     // await sendEmailVerification();
   };
 
   let displayError;
-  if (error) {
+  if (error || error1) {
     displayError = (
-      <p className="text-red-500 text-center"> {error?.message}</p>
+      <p className="text-red-500 text-center">
+        {" "}
+        {error?.message} {error1?.message}
+      </p>
     );
   }
 
-  if (loading) {
+  if (loading || updating) {
     <LoadingSpinner></LoadingSpinner>;
   }
 
@@ -47,7 +59,7 @@ const Register = () => {
                 type="text"
                 placeholder="Enter Name"
                 className="input input-bordered"
-                name="name"
+                name="displayName"
                 required
               />
             </div>
