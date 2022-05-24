@@ -2,31 +2,29 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./PurchaseProduct.css";
 import useLoadSingleTool from "./../../../Hooks/useLoadSingleTool";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../../firebase.init";
-import { toast } from "react-toastify";
+
+import PurchaseForm from "./PurchaseForm/PurchaseForm";
 
 const PurchaseProduct = () => {
-  const [user] = useAuthState(auth);
-  // console.log(user);
+
   const { id } = useParams();
   const [tool] = useLoadSingleTool(id);
-  const user_name = user?.displayName;
-  const user_email = user?.email;
-  // const [counter, setCounter] = useState(tool.min_quantity);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const name = user_name;
-    const email = user_email;
-    const phone = event.target.number.value;
-    const address = event.target.address.value;
 
-    event.target.reset();
-    toast("Order Placed Successfully!");
+  const [Order, setOrder] = useState(0);
+  const orderIncrement = () => {
+    setOrder(Order + 1)
+  }
+  const orderDecrement = () => {
+    setOrder(Order - 1)
+  }
+  let OrderQuantity
+  if (Order > 0) {
+    OrderQuantity = Order
+  }
 
-    console.log(name, email, phone, address);
-  };
+
+
 
   return (
     <div className="container">
@@ -39,7 +37,7 @@ const PurchaseProduct = () => {
           <figure>
             <img src={tool.picture} alt="Album" />
           </figure>
-          <div className="card-body  bg-gray-100">
+          <div className="card-body flex flex-col justify-between bg-gray-100">
             <h2 className="font-bold text-center text-2xl">{tool.name}</h2>
             <div>
               <h2 className="my-2">
@@ -61,87 +59,30 @@ const PurchaseProduct = () => {
                   <sup>PER UNIT</sup>
                 </div>
               </h2>
+              <h2 className="my-4">
+                <strong>Total Sold: </strong>
+                <div className="indicator">
+                  {tool.sold}
+                </div>
+              </h2>
             </div>
             <div>
-              {/* <h2 className="flex items-center">
-                <strong className="mr-4">Order Quantity: </strong>
-                <div className="flex mt-[-10px]">
-                  <button className="text-6xl" disabled>
-                    -
-                  </button>
-                  <div className="text-4xl flex items-center">{counter}</div>
-                  <button className="text-6xl">+</button>
-                </div>
-              </h2> */}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="pb-20 flex justify-center">
-        <div className="card bg-orange-500 shadow-xl w-1/2">
-          <div className="card-body">
-            <h2 className="text-center font-bold text-4xl">Order Details</h2>
-            <div className="flex justify-center">
-              <form onSubmit={handleSubmit}>
-                <div class="form-control place-order-form">
-                  <label class="label">
-                    <span class="label-text">Your Name</span>
-                  </label>
-                  <input
-                    type="text"
-                    class="input input-bordered w-full max-w-xs"
-                    value={user?.displayName}
-                    // name={user?.displayName}
-                    readOnly
-                    disabled
-                  />
-                </div>
-                <div class="form-control w-full max-w-xs">
-                  <label class="label">
-                    <span class="label-text">Your Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    class="input input-bordered w-full max-w-xs"
-                    value={user?.email}
-                    // name={user?.email}
-                    readOnly
-                    disabled
-                  />
-                </div>
-                <div class="form-control w-full max-w-xs">
-                  <label class="label">
-                    <span class="label-text">Contact Number</span>
-                  </label>
-                  <input
-                    type="number"
-                    class="input input-bordered w-full max-w-xs"
-                    placeholder="Your Phone Number"
-                    name="number"
-                    required
-                  />
-                </div>
-                <div class="form-control w-full max-w-xs">
-                  <label class="label">
-                    <span class="label-text">Billing Address</span>
-                  </label>
-                  <textarea
-                    type="textarea"
-                    class="input input-bordered w-full max-w-xs"
-                    placeholder="Your Detail Address"
-                    name="address"
-                    required
-                  />
-                </div>
 
-                <div class="form-control w-full max-w-xs mt-4">
-                  <button class="btn btn-outline">Place Order</button>
-                </div>
-              </form>
             </div>
+          </div>
+
+
+          <div className='flex gap-x-2 mt-4'>
+            <button className='btn btn-primary' onClick={orderDecrement}>-</button>
+            <input type="number" aria-controls='false'
+              value={Order ? OrderQuantity : tool?.min_quantity}
+              name="OrderQuantity" className='input input-bordered input-accent text-accent w-20 text-center' />
+            <button className='btn btn-primary' onClick={orderIncrement}>+</button>
+            {/* <button class="btn btn-primary">Listen</button> */}
           </div>
         </div>
       </div>
+      <PurchaseForm OrderQuantity={OrderQuantity} tool={tool} Order={Order}></PurchaseForm>
     </div>
   );
 };
