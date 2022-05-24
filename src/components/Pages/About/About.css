@@ -1,0 +1,23 @@
+.about-page {
+  background-color: #f97316;
+  height: 30vh;
+}
+
+.about-page h1 {
+  font-size: 60px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 3%;
+}
+
+.detail-section {
+  background-color: #0c85b5;
+  height: 40vh;
+}
+.detail-section p {
+  font-size: 20px;
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 3%;
+}

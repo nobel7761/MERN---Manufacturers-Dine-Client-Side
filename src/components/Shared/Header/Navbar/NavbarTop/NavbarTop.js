@@ -13,10 +13,14 @@ const NavbarTop = () => {
   return (
     <div className="navbar-top">
       <div className="py-2 bg-black">
-        <p className="text-center text-orange-500 text-sm">
-          HOPE IS A GOOD THING! MAY BE THE BEST OF THINGS! NO GOOD THING EVER
-          DIES!
-        </p>
+        <div className="container">
+          <marquee
+            text="swetha"
+            className="text-center text-orange-500 text-xl"
+          >
+            Thank You PROGRAMMING HERO
+          </marquee>
+        </div>
       </div>
       <div className="container flex justify-between items-center py-2">
         <div>

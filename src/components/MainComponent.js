@@ -11,6 +11,9 @@ import NotFound from "./Pages/NotFound/NotFound";
 import PurchaseProduct from "./Pages/PurchaseProduct/PurchaseProduct";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
+import AddReview from "./Pages/Dashboard/AddReview/AddReview";
+import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
 
 const MainComponent = () => {
   return (
@@ -26,7 +29,11 @@ const MainComponent = () => {
           path="/my-portfolio"
           element={<MyPortfolio></MyPortfolio>}
         ></Route>
-        <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
+        <Route path="/dashboard" element={<Dashboard></Dashboard>}>
+          <Route index element={<MyProfile></MyProfile>} />
+          <Route path="my-review" element={<AddReview></AddReview>} />
+          <Route path="my-orders" element={<MyOrders></MyOrders>} />
+        </Route>
 
         <Route
           path="/tools/:id"
