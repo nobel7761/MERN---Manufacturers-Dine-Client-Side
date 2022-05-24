@@ -23,17 +23,17 @@ const Dashboard = () => {
             {/* <!-- Sidebar content here --> */}
             <li>
               <Link to="/dashboard">
-                <button class="btn btn-primary w-full">My Profile</button>
+                <button className="btn btn-primary w-full">My Profile</button>
               </Link>
             </li>
             <li>
               <Link to="/dashboard/my-orders">
-                <button class="btn btn-primary w-full">My Orders</button>
+                <button className="btn btn-primary w-full">My Orders</button>
               </Link>
             </li>
             <li>
               <Link to="/dashboard/my-review">
-                <button class="btn btn-primary w-full">My Review</button>
+                <button className="btn btn-primary w-full">My Review</button>
               </Link>
             </li>
           </ul>

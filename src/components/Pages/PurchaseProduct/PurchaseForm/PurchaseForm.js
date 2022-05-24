@@ -82,51 +82,51 @@ const PurchaseForm = ({ OrderQuantity, tool, Order }) => {
                     <h2 className="text-center font-bold text-4xl">Order Details</h2>
                     <div className="">
                         <form onSubmit={handleSubmit}>
-                            <div class="form-control place-order-form">
-                                <label class="label">
-                                    <span class="label-text">Your Name</span>
+                            <div className="form-control place-order-form">
+                                <label className="label">
+                                    <span className="label-text">Your Name</span>
                                 </label>
                                 <input
                                     type="text"
-                                    class="input input-bordered"
+                                    className="input input-bordered"
                                     value={user?.displayName}
                                     readOnly
                                     disabled
                                 />
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Your Email</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Your Email</span>
                                 </label>
                                 <input
                                     type="email"
-                                    class="input input-bordered "
+                                    className="input input-bordered "
                                     value={user?.email}
                                     readOnly
                                     disabled
                                 />
                             </div>
 
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Product Name</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Product Name</span>
                                 </label>
                                 <input
                                     type="text"
-                                    class="input input-bordered "
+                                    className="input input-bordered "
                                     value={tool?.name}
                                     readOnly
                                     disabled
                                 />
                             </div>
 
-                            <div class="form-control ">
-                                <label class="label">
-                                    <span class="label-text">Order Quantity</span>
+                            <div className="form-control ">
+                                <label className="label">
+                                    <span className="label-text">Order Quantity</span>
                                 </label>
                                 <input
                                     type="number"
-                                    class="input input-bordered "
+                                    className="input input-bordered "
                                     placeholder="Your Quantity"
                                     name="orderQuantity"
                                     value={Order ? OrderQuantity : tool?.min_quantity}
@@ -136,34 +136,34 @@ const PurchaseForm = ({ OrderQuantity, tool, Order }) => {
 
 
                             </div>
-                            <div class="form-control ">
-                                <label class="label">
-                                    <span class="label-text">Contact Number</span>
+                            <div className="form-control ">
+                                <label className="label">
+                                    <span className="label-text">Contact Number</span>
                                 </label>
                                 <input
                                     type="number"
-                                    class="input input-bordered "
+                                    className="input input-bordered "
                                     placeholder="Your Phone Number"
                                     name="number"
                                     required
                                 />
                             </div>
-                            <div class="form-control ">
-                                <label class="label">
-                                    <span class="label-text">Billing Address</span>
+                            <div className="form-control ">
+                                <label className="label">
+                                    <span className="label-text">Billing Address</span>
                                 </label>
                                 <textarea
                                     type="textarea"
-                                    class="input input-bordered "
+                                    className="input input-bordered "
                                     placeholder="Your Detail Address"
                                     name="address"
                                     required
                                 />
                             </div>
 
-                            <div class="form-control  mt-4">
+                            <div className="form-control  mt-4">
                                 <input disabled={OrderQuantity < minimumOrder || AvailableQuantity < OrderQuantity ? Disable : false} type="submit" value="purchase" className='btn btn-outline' />
-                                {/* <button class="btn ">Place Order</button> */}
+                                {/* <button className="btn ">Place Order</button> */}
                             </div>
                         </form>
                     </div>

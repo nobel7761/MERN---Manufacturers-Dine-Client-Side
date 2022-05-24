@@ -66,20 +66,18 @@ const PurchaseProduct = () => {
                 </div>
               </h2>
             </div>
-            <div>
-
+            <div className='flex justify-center mt-4'>
+              <button className='btn btn-primary mr-4' onClick={orderDecrement}>-</button>
+              <input type="number" aria-controls='false'
+                value={Order ? OrderQuantity : tool?.min_quantity}
+                name="OrderQuantity" className='input input-bordered input-accent text-accent w-20 text-center' />
+              <button className='btn btn-primary ml-4' onClick={orderIncrement}>+</button>
+              {/* <button className="btn btn-primary">Listen</button> */}
             </div>
           </div>
 
 
-          <div className='flex gap-x-2 mt-4'>
-            <button className='btn btn-primary' onClick={orderDecrement}>-</button>
-            <input type="number" aria-controls='false'
-              value={Order ? OrderQuantity : tool?.min_quantity}
-              name="OrderQuantity" className='input input-bordered input-accent text-accent w-20 text-center' />
-            <button className='btn btn-primary' onClick={orderIncrement}>+</button>
-            {/* <button class="btn btn-primary">Listen</button> */}
-          </div>
+
         </div>
       </div>
       <PurchaseForm OrderQuantity={OrderQuantity} tool={tool} Order={Order}></PurchaseForm>

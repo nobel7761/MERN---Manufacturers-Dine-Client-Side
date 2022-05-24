@@ -5,6 +5,9 @@ import CrossSection from "./CrossSection/CrossSection";
 import FourPartSection from "./FourPartSection/FourPartSection";
 import "./Home.css";
 import Tools from "./Tools/Tools";
+import Reviews from './Reviews/Reviews';
+import Partners from './Partners/Partners';
+import SearchSection from "./SearchSection/SearchSection";
 
 const Home = () => {
   return (
@@ -15,6 +18,9 @@ const Home = () => {
       <BusinessSummary></BusinessSummary>
       <Tools></Tools>
       <FourPartSection></FourPartSection>
+      <Reviews></Reviews>
+      <Partners></Partners>
+      <SearchSection></SearchSection>
     </div>
   );
 };
