@@ -3,9 +3,11 @@ import CustomLink from "../CustomLink/CustomLink";
 import auth from "./../../../../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const MainNavbar = () => {
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
   return (
     <div className="bg-black">
       <div className="navbar lg:w-3/4 lg:mx-auto  text-white">
@@ -41,6 +43,9 @@ const MainNavbar = () => {
               <CustomLink to="/about" className="p-4">
                 ABOUT
               </CustomLink>
+              <CustomLink to="/my-portfolio" className="p-4">
+                MY PORTFOLIO
+              </CustomLink>
             </ul>
           </div>
         </div>
@@ -56,6 +61,9 @@ const MainNavbar = () => {
             </CustomLink>
             <CustomLink to="/about" className="mr-4">
               ABOUT
+            </CustomLink>
+            <CustomLink to="/my-portfolio" className="mr-4">
+              MY PORTFOLIO
             </CustomLink>
           </ul>
         </div>
@@ -82,7 +90,14 @@ const MainNavbar = () => {
                 tabIndex="0"
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-black rounded-box w-52"
               >
-                <button onClick={() => signOut(auth)}>SING OUT</button>
+                <li>
+                  <button onClick={() => navigate("/dashboard")}>
+                    DASHBOARD
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => signOut(auth)}>SING OUT</button>
+                </li>
               </ul>
             </div>
           ) : (

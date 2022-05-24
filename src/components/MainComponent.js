@@ -9,6 +9,8 @@ import Footer from "./Shared/Footer/Footer";
 import Blogs from "./Pages/Blogs/Blogs";
 import NotFound from "./Pages/NotFound/NotFound";
 import PurchaseProduct from "./Pages/PurchaseProduct/PurchaseProduct";
+import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 const MainComponent = () => {
   return (
@@ -20,6 +22,11 @@ const MainComponent = () => {
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+        <Route
+          path="/my-portfolio"
+          element={<MyPortfolio></MyPortfolio>}
+        ></Route>
+        <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
 
         <Route
           path="/tools/:id"
