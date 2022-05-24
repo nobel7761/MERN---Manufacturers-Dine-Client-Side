@@ -14,6 +14,10 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
 import AddReview from "./Pages/Dashboard/AddReview/AddReview";
 import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
+import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
+import AddNewProduct from './Pages/Dashboard/AddNewProduct/AddNewProduct';
+import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
+import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 
 const MainComponent = () => {
   return (
@@ -33,6 +37,10 @@ const MainComponent = () => {
           <Route index element={<MyProfile></MyProfile>} />
           <Route path="my-review" element={<AddReview></AddReview>} />
           <Route path="my-orders" element={<MyOrders></MyOrders>} />
+          <Route path="manage-all-orders" element={<ManageAllOrders></ManageAllOrders>} />
+          <Route path="add-new-product" element={<AddNewProduct></AddNewProduct>} />
+          <Route path="make-new-admin" element={<MakeAdmin></MakeAdmin>} />
+          <Route path="manage-products" element={<ManageProducts></ManageProducts>} />
         </Route>
 
         <Route

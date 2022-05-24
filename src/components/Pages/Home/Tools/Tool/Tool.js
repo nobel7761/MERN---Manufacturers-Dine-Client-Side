@@ -17,7 +17,7 @@ const Tool = (props) => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="card bg-base-100  p-5">
+      <div className="card tool-card bg-base-100  p-5">
         <figure>
           <img src={picture} alt="tools" />
         </figure>

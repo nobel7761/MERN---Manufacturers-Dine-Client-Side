@@ -36,6 +36,26 @@ const Dashboard = () => {
                 <button className="btn btn-primary w-full">My Review</button>
               </Link>
             </li>
+            <li>
+              <Link to="/dashboard/manage-all-orders">
+                <button className="btn btn-primary w-full">Manage All Orders</button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/add-new-product">
+                <button className="btn btn-primary w-full">Add New Product</button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/make-new-admin">
+                <button className="btn btn-primary w-full">Make New Admin</button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/manage-products">
+                <button className="btn btn-primary w-full">Manage Products</button>
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
