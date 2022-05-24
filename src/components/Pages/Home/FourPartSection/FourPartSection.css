@@ -1,0 +1,114 @@
+.four-part-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+.upper-left {
+  background-image: url("../../../../images/four-section/banner-25.jpg.webp") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px 150px;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: overlay;
+  height: 400px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.upper-left h1 {
+  text-align: center;
+  font-size: 30px;
+  color: white;
+}
+.upper-left h2 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  color: white;
+}
+.upper-left h3 {
+  text-align: center;
+  font-size: 46px;
+  font-weight: bolder;
+  color: white;
+}
+
+.upper-right {
+  background-image: url("../../../../images/four-section/banner-27.jpg.webp") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50;
+  padding: 150px;
+  height: 400px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.upper-right h1 {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+.upper-right h2 {
+  color: white;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.lower-left {
+  background-image: url("../../../../images/four-section/banner-26.jpg.webp") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50;
+  padding: 150px;
+  height: 400px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.lower-left h1 {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+.lower-left h2 {
+  color: white;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.lower-right {
+  background-image: url("../../../../images/four-section/banner-28.jpg.webp") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50;
+  padding: 150px;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: overlay;
+}
+
+.lower-right h1 {
+  text-align: center;
+  font-size: 30px;
+  color: white;
+}
+.lower-right h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: white;
+}
+.lower-right h3 {
+  text-align: center;
+  font-size: 46px;
+  font-weight: bolder;
+  color: white;
+}
