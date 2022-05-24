@@ -17,24 +17,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-.upper-left h1 {
-  text-align: center;
-  font-size: 30px;
-  color: white;
-}
-.upper-left h2 {
-  text-align: center;
-  font-size: 36px;
-  font-weight: 800;
-  color: white;
-}
-.upper-left h3 {
-  text-align: center;
-  font-size: 46px;
-  font-weight: bolder;
-  color: white;
-}
-
 .upper-right {
   background-image: url("../../../../images/four-section/banner-27.jpg.webp") !important;
   background-position: center;
@@ -45,18 +27,6 @@
   height: 400px;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-}
-
-.upper-right h1 {
-  color: white;
-  text-align: center;
-  font-size: 30px;
-}
-.upper-right h2 {
-  color: white;
-  text-align: center;
-  font-size: 36px;
-  font-weight: 800;
 }
 
 .lower-left {
@@ -71,17 +41,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-.lower-left h1 {
-  color: white;
-  text-align: center;
-  font-size: 30px;
-}
-.lower-left h2 {
-  color: white;
-  text-align: center;
-  font-size: 36px;
-  font-weight: 800;
-}
 
 .lower-right {
   background-image: url("../../../../images/four-section/banner-28.jpg.webp") !important;
@@ -93,22 +52,4 @@
   height: 400px;
   background-color: rgba(0, 0, 0, 0.3);
   background-blend-mode: overlay;
-}
-
-.lower-right h1 {
-  text-align: center;
-  font-size: 30px;
-  color: white;
-}
-.lower-right h2 {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 800;
-  color: white;
-}
-.lower-right h3 {
-  text-align: center;
-  font-size: 46px;
-  font-weight: bolder;
-  color: white;
 }
