@@ -8,12 +8,12 @@ import { toast } from "react-toastify";
 
 const PurchaseProduct = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
+  // console.log(user);
   const { id } = useParams();
   const [tool] = useLoadSingleTool(id);
   const user_name = user?.displayName;
   const user_email = user?.email;
-  const [counter, setCounter] = useState(tool.min_quantity);
+  // const [counter, setCounter] = useState(tool.min_quantity);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -63,7 +63,7 @@ const PurchaseProduct = () => {
               </h2>
             </div>
             <div>
-              <h2 className="flex items-center">
+              {/* <h2 className="flex items-center">
                 <strong className="mr-4">Order Quantity: </strong>
                 <div className="flex mt-[-10px]">
                   <button className="text-6xl" disabled>
@@ -72,7 +72,7 @@ const PurchaseProduct = () => {
                   <div className="text-4xl flex items-center">{counter}</div>
                   <button className="text-6xl">+</button>
                 </div>
-              </h2>
+              </h2> */}
             </div>
           </div>
         </div>
