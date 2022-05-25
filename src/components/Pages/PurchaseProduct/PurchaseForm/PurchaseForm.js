@@ -42,12 +42,13 @@ const PurchaseForm = ({ OrderQuantity, tool, Order }) => {
         else {
             const order = {
                 productName: tool.name,
-                userName: name,
-                userEmail: email,
+                username: name,
+                email: email,
                 orderQuantity: orderQuantity,
                 phone: phone,
-                address: address
-
+                address: address,
+                totalBill: orderQuantity * tool.price,
+                paymentStatus: 'unpaid',
             }
 
 

@@ -1,5 +1,5 @@
 .reviewCard {
-
+    height: 400px;
     --border-radius: 15px;
     --border-width: 4px;
     appearance: none;

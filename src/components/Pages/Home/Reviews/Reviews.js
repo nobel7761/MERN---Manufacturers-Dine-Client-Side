@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import StarRatings from 'react-star-ratings'
 
 // Import Swiper styles
 import "swiper/css";
@@ -23,7 +24,7 @@ const Reviews = () => {
             <Swiper
                 slidesPerView={3.5}
                 spaceBetween={30}
-                slidesPerGroup={5}
+                slidesPerGroup={1}
                 loop={true}
                 loopFillGroupWithBlank={true}
                 pagination={{
@@ -40,8 +41,10 @@ const Reviews = () => {
                                 <img src={Avatar} alt="avatar" className="rounded-xl w-32 mx-auto " />
                             </figure>
                             <div className="card-body items-center text-center">
+
                                 <h2 className="card-title uppercase">{review.name}</h2>
                                 <p className="text-sm">"<i>{review.review}</i>"</p>
+                                <p className="text-sm">{review?.rating ? `Ratings : ${review.rating}` : ''}</p>
 
                             </div>
                         </div>
