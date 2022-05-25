@@ -34,7 +34,7 @@ const MyProfile = () => {
         };
     
         if (address || education || phone || linkedin) {
-          const url = `http://localhost:5000/user/${singleUser?.email}`;
+          const url = `https://pure-atoll-42866.herokuapp.com/user/${singleUser?.email}`;
           fetch(url, {
             method: "PUT",
             headers: {

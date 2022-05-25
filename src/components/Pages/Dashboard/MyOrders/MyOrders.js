@@ -16,7 +16,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+      fetch(`https://pure-atoll-42866.herokuapp.com/myOrders?email=${user?.email}`, {
         method: 'GET',
         headers: {
           'authorization': `Bearer ${localStorage.getItem('accessToken')}`

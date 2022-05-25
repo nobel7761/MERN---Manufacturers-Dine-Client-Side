@@ -1,70 +1,41 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../../../firebase.init';
-import './MakeAdmin.css';
+import { useQuery } from 'react-query';
+import LoadingSpinner from '../../../Shared/LoadingSpinner/LoadingSpinner';
+import UserRow from './UserRow/UserRow';
 
 const MakeAdmin = () => {
-    const [user] = useAuthState(auth);
-
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://pure-atoll-42866.herokuapp.com/users', {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()));
+    if (isLoading) {
+        return <LoadingSpinner></LoadingSpinner>
+    }
     return (
         <div>
-            <h1 className="text-center text-3xl">
-                Hello{" "}
-                <span className="text-[#f97316] font-extrabold">
-                    {user?.displayName}
-                </span>
-            </h1>
-
-
-
-            <div className="overflow-x-auto mt-10">
-                <h1 className='text-center mb-4 font-bold text-2xl text-primary'>Remove Admin</h1>
+            <h2 className="text-4xl text-center font-extrabold text-[#F97316] my-4">All Users: {users.length}</h2>
+            <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Email</th>
-                            <th className='flex justify-center'>Action</th>
+                            <th>Name</th>
+                            <th>Job</th>
+                            <th>Favorite Color</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr className="active">
-                            <th></th>
-                            <td>
-                                <strong></strong>
-                            </td>
-                            <td className='flex justify-center'><FontAwesomeIcon icon={faTrashCan} className='text-[#F97316] text-3xl' /></td>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <td>
-                                <strong></strong>
-                            </td>
-                            <td className='flex justify-center'><FontAwesomeIcon icon={faTrashCan} className='text-[#F97316] text-3xl' /></td>
-                        </tr>
-                        <tr className="active">
-                            <th></th>
-                            <td>
-                                <strong></strong>
-                            </td>
-                            <td className='flex justify-center'><FontAwesomeIcon icon={faTrashCan} className='text-[#F97316] text-3xl' /></td>
-                        </tr>
-
+                        {
+                            users.map(user => <UserRow
+                                key={user._id}
+                                user={user}
+                                refetch={refetch}
+                            ></UserRow>)
+                        }
                     </tbody>
                 </table>
-            </div>
-
-
-            <div>
-                <h1 className='text-center my-4 font-bold text-2xl text-primary'>Add New Admin</h1>
-
-                <div className='flex justify-center'>
-                    <input type="text" placeholder="Type Email Here" className="input input-bordered input-info w-1/2 " />
-                    <button className='btn bg-[#F97316] border-0 w-1/4'>MAKE ADMIN</button>
-                </div>
             </div>
         </div>
     );

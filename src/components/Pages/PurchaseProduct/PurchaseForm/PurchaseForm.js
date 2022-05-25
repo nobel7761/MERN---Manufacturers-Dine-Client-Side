@@ -54,7 +54,7 @@ const PurchaseForm = ({ OrderQuantity, tool, Order }) => {
 
 
 
-            fetch('http://localhost:5000/order-placing', {
+            fetch('https://pure-atoll-42866.herokuapp.com/order-placing', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

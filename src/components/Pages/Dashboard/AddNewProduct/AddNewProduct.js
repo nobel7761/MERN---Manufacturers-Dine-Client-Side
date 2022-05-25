@@ -1,7 +1,45 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import './AddNewProduct.css';
 
 const AddNewProduct = () => {
+    const handleSubmit = event => {
+        event.preventDefault();
+        const name = event.target.productName.value;
+        const picture = event.target.image.value;
+        const description = event.target.description.value;
+        const available_quantity = event.target.availableQuantity.value;
+        const min_quantity = event.target.minQuantity.value;
+        const price = event.target.productPrice.value;
+
+
+        event.target.reset();
+
+        const newProduct = {
+            name: name,
+            picture: picture,
+            description: description,
+            available_quantity: available_quantity,
+            min_quantity: min_quantity,
+            price: price
+        }
+
+        fetch('https://pure-atoll-42866.herokuapp.com/tool', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(newProduct)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                toast("New Product Added Successfully!");
+            })
+    }
+
+
+
     return (
         <div>
             <div className="pb-20 flex justify-center mt-5">
@@ -9,7 +47,7 @@ const AddNewProduct = () => {
                     <div className="card-body">
                         <h2 className="text-center font-bold text-4xl">ADD NEW PRODUCT</h2>
                         <div className="">
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <div className="form-control ">
                                     <label className="label">
                                         <span className="label-text">Product Name</span>

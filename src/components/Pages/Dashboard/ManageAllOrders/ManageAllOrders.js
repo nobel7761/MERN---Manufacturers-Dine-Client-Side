@@ -1,10 +1,16 @@
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import useLoadAllOrders from '../../../../Hooks/useLoadAllOrders';
 import './ManageAllOrders.css';
 
 const ManageAllOrders = () => {
+
+    const [orders, setOrders] = useLoadAllOrders();
+    console.log(orders);
     return (
         <div>
-            <h1 className='text-center text-3xl font-bold uppercase my-4 text-primary'>manage all orders</h1>
+            <h1 className='text-center text-3xl font-bold uppercase my-4 text-[#F97316]'>manage all orders</h1>
 
 
 
@@ -14,7 +20,7 @@ const ManageAllOrders = () => {
 
                     <thead>
                         <tr>
-                            <th></th>
+
                             <th>Product Name</th>
                             <th>Ordered Quantity</th>
                             <th>Total Bill</th>
@@ -25,17 +31,18 @@ const ManageAllOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
+                        {
+                            orders.map(order => <tr>
+                                <td>{order?.productName}</td>
+                                <td className='text-center'>{order?.orderQuantity}</td>
+                                <td className='text-center'>{order?.totalBill}</td>
+                                <td className='text-center'>{order?.email}</td>
+                                <td className='text-center'>{order?.payment ? order?.payment : 'unpaid'}</td>
+                                <td className='text-center'>{order?.status === 'unpaid' ? order?.status : '-'}</td>
+                                <td className='text-center'>{order?.status ? <button className='btn btn-primary'>Change Status</button> : <FontAwesomeIcon icon={faTrashCan} className='text-xl text-[#F97316]' />}</td>
+                            </tr>)
+                        }
 
-                        <tr className="active">
-                            <th>1</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
 
 
                     </tbody>

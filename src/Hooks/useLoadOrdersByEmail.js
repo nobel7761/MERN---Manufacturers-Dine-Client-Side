@@ -4,7 +4,7 @@ const useLoadOrdersByEmail = email => {
     const [orders, setOrders] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?userEmail=${email}`)
+        fetch(`https://pure-atoll-42866.herokuapp.com/orders?userEmail=${email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
 

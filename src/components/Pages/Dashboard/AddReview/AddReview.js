@@ -30,7 +30,7 @@ const AddReview = () => {
     console.log(userReview);
 
 
-    fetch('http://localhost:5000/review', {
+    fetch('https://pure-atoll-42866.herokuapp.com/review', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

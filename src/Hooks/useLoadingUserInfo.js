@@ -5,7 +5,7 @@ const useLoadingUserInfo = (email) => {
 
   // const [product, setProduct] = useState({});
   useEffect(() => {
-    const url = `http://localhost:5000/user/${email}`;
+    const url = `https://pure-atoll-42866.herokuapp.com/user/${email}`;
     fetch(url)
       .then(res => res.json())
       .then(data => setUserInfo(data));
