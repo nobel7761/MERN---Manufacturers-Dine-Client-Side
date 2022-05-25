@@ -1,130 +1,115 @@
-import React, { useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
-import { toast } from "react-toastify";
-import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
-import auth from "./../../../firebase.init";
-import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import useToken from "../../../Hooks/useToken";
+import React, { useEffect } from 'react';
+import './Login.css';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useForm } from "react-hook-form";
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import auth from '../../../firebase.init';
+import useToken from '../../../Hooks/useToken';
+import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 
 const Login = () => {
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const { register, formState: { errors }, handleSubmit } = useForm();
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
+
+  const [token] = useToken(user || gUser);
+
+  let signInError;
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
-  const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
-  const [signInWithGoogle, gUser, loading1, error2] = useSignInWithGoogle(auth);
-  const [user1] = useAuthState(auth);
-  const sendingUser = user || gUser;
-  const [token] = useToken(sendingUser);
-
-  if (token) {
-    navigate("/");
-  }
-
-  let displayError;
-  if (error || error1 || error2) {
-    displayError = (
-      <p className="text-red-500 text-center"> Error: {error?.message}</p>
-    );
-  }
-  if (loading || sending || loading1) {
-    <LoadingSpinner></LoadingSpinner>;
-  }
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-    event.target.reset();
-
-    await signInWithEmailAndPassword(email, password);
-
-    console.log(email, password);
-  };
-
-  const resetPassword = async () => {
-    const email = emailRef.current.value;
-    if (email) {
-      await sendPasswordResetEmail(email);
-      toast("Send email");
-    } else {
-      toast("Please enter your email address");
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
     }
-  };
+  }, [token, from, navigate])
+
+  if (loading || gLoading) {
+    return <LoadingSpinner></LoadingSpinner>
+  }
+
+  if (error || gError) {
+    signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
+  }
+
+  const onSubmit = data => {
+    signInWithEmailAndPassword(data.email, data.password);
+  }
+
   return (
-    <div className="login-background">
-      <div className="">
-        <form onSubmit={handleSubmit}>
-          <div className="form-container text-white">
-            <h1 className="text-center text-4xl font-bold">Please Login</h1>
-            {displayError}
-            <div className="form-control">
+    <div className='login-background flex h-screen justify-center items-center'>
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card-body">
+          <h2 className="text-center text-2xl font-bold">Login</h2>
+          <form onSubmit={handleSubmit(onSubmit)}>
+
+            <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text text-white">Email Address</span>
+                <span className="label-text">Email</span>
               </label>
               <input
-                ref={emailRef}
                 type="email"
-                placeholder="Enter Email"
-                className="input input-bordered"
-                name="email"
-                required
+                placeholder="Your Email"
+                className="input input-bordered w-full max-w-xs"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: 'Email is Required'
+                  },
+                  pattern: {
+                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                    message: 'Provide a valid Email'
+                  }
+                })}
               />
-            </div>
-            <div className="form-control">
               <label className="label">
-                <span className="label-text text-white">Password</span>
+                {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+              </label>
+            </div>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">Password</span>
               </label>
               <input
-                ref={passwordRef}
                 type="password"
                 placeholder="Password"
-                className="input input-bordered"
-                name="password"
-                required
+                className="input input-bordered w-full max-w-xs"
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: 'Password is Required'
+                  },
+                  minLength: {
+                    value: 6,
+                    message: 'Must be 6 characters or longer'
+                  }
+                })}
               />
+              <label className="label">
+                {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+                {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+              </label>
             </div>
 
-            <p className="text-center">
-              Forget Password?{" "}
-              <span
-                className="text-blue-500 underline cursor-pointer"
-                onClick={resetPassword}
-              >
-                Click Here
-              </span>
-            </p>
-
-            <p className="text-center">
-              Don't Have An Account?{" "}
-              <Link to="/register" className="text-blue-500 underline">
-                Please Register
-              </Link>
-            </p>
-
-            <div className="form-button">
-              <button className="btn btn-primary w-1/2">Login</button>
-            </div>
-          </div>
-        </form>
-
-        <div className="w-full flex justify-center">
+            {signInError}
+            <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
+          </form>
+          <p><small>New to Doctors Portal <Link className='text-primary' to="/signup">Create New Account</Link></small></p>
+          <div className="divider">OR</div>
           <button
-            className="social-media-btn btn btn-outline mt-4 w-1/3"
-            onClick={async () => {
-              await signInWithGoogle();
-            }}
-          >
-            <FontAwesomeIcon icon={faGoogle} className="mr-4" />
-            GOOGLE
-          </button>
+            onClick={() => signInWithGoogle()}
+            className="btn btn-outline"
+          >Continue with Google</button>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

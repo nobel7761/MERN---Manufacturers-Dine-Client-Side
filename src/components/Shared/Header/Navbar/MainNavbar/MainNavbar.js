@@ -96,7 +96,10 @@ const MainNavbar = () => {
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => signOut(auth)}>SING OUT</button>
+                  <button onClick={() => {
+                    signOut(auth)
+                    localStorage.removeItem('accessToken')
+                  }}>SING OUT</button>
                 </li>
               </ul>
             </div>
