@@ -3,12 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { toast } from "react-toastify";
 import {
+  useAuthState,
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "./../../../firebase.init";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
-import SocialMediaLogin from "../SocialMediaLogin/SocialMediaLogin";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import useToken from "../../../Hooks/useToken";
+// import SocialMediaLogin from "../SocialMediaLogin/SocialMediaLogin";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,19 +24,22 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, error1] =
     useSendPasswordResetEmail(auth);
+  const [signInWithGoogle, loading1, error2] = useSignInWithGoogle(auth);
+  const [user1] = useAuthState(auth);
+  const [token] = useToken(user);
 
-  if (user) {
+  if (token) {
     navigate("/");
   }
 
   let displayError;
-  if (error || error1) {
+  if (error || error1 || error2) {
     displayError = (
       <p className="text-red-500 text-center"> Error: {error?.message}</p>
     );
   }
-  if (loading || sending) {
-    return <LoadingSpinner></LoadingSpinner>;
+  if (loading || sending || loading1) {
+    <LoadingSpinner></LoadingSpinner>;
   }
 
   const handleSubmit = async (event) => {
@@ -111,7 +119,17 @@ const Login = () => {
           </div>
         </form>
 
-        <SocialMediaLogin></SocialMediaLogin>
+        <div className="w-full flex justify-center">
+          <button
+            className="social-media-btn btn btn-outline mt-4 w-1/3"
+            onClick={async () => {
+              await signInWithGoogle();
+            }}
+          >
+            <FontAwesomeIcon icon={faGoogle} className="mr-4" />
+            GOOGLE
+          </button>
+        </div>
       </div>
     </div>
   );

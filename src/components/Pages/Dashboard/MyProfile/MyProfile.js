@@ -30,7 +30,7 @@ const MyProfile = () => {
     };
     // console.log(updateInfo);
 
-    const url = `http://localhost:5000/userprofile/${singleUser?.email}`;
+    const url = `http://localhost:5000/user/${singleUser?.email}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -95,7 +95,11 @@ const MyProfile = () => {
                 <strong>Linkedin Profile: </strong>
               </td>
               <td>
-                <a href={user1?.linkedin} target="_blank">
+                <a
+                  href={user1?.linkedin}
+                  target="_blank"
+                  className="text-blue-700 text-sm underline"
+                >
                   {user1?.linkedin}
                 </a>
               </td>

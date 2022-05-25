@@ -1,22 +1,43 @@
 import React from "react";
 import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import auth from "./../../../firebase.init";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import LoadingSpinner from "./../../Shared/LoadingSpinner/LoadingSpinner";
-import SocialMediaLogin from "./../SocialMediaLogin/SocialMediaLogin";
+// import SocialMediaLogin from "./../SocialMediaLogin/SocialMediaLogin";
 import { toast } from "react-toastify";
+import useToken from "../../../Hooks/useToken";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const Register = () => {
   const [createUserWithEmailAndPassword, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-  const [updateProfile, updating, error1] = useUpdateProfile(auth);
+  const [signInWithGoogle, loading1, error1] = useSignInWithGoogle(auth);
+  const [updateProfile, updating, error2] = useUpdateProfile(auth);
   const [user] = useAuthState(auth);
-  console.log(user);
+  const [token] = useToken(user);
+  const navigate = useNavigate();
+
+  let displayError;
+  if (error || error1 || error2) {
+    displayError = (
+      <p className="text-red-500 text-center"> Error: {error?.message}</p>
+    );
+  }
+
+  if (token) {
+    navigate("/");
+  }
+
+  if (loading || updating || loading1) {
+    <LoadingSpinner></LoadingSpinner>;
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,46 +45,13 @@ const Register = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     event.target.reset();
-    // setDisplayName(displayName);
 
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName });
     // await sendEmailVerification();
 
     //sending information to database.
-    const createUser = {
-      username: displayName,
-      email: email,
-    };
-
-    fetch("http://localhost:5000/users", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(createUser),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        toast("Registered Successfully!");
-      });
   };
-
-  let displayError;
-  if (error || error1) {
-    displayError = (
-      <p className="text-red-500 text-center">
-        {" "}
-        {error?.message} {error1?.message}
-      </p>
-    );
-  }
-
-  if (loading || updating) {
-    <LoadingSpinner></LoadingSpinner>;
-  }
-
   return (
     <div className="register-background">
       <div className="container">
@@ -120,7 +108,17 @@ const Register = () => {
           </div>
         </form>
 
-        <SocialMediaLogin></SocialMediaLogin>
+        <div className="w-full flex justify-center">
+          <button
+            className="social-media-btn btn btn-outline mt-4 w-1/3"
+            onClick={async () => {
+              await signInWithGoogle();
+            }}
+          >
+            <FontAwesomeIcon icon={faGoogle} className="mr-4" />
+            GOOGLE
+          </button>
+        </div>
       </div>
     </div>
   );
