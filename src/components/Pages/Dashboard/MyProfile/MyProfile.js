@@ -2,47 +2,55 @@ import React from "react";
 import "./MyProfile.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./../../../../firebase.init";
-import { toast } from "react-toastify";
 import useLoadingUserInfo from "../../../../Hooks/useLoadingUserInfo";
+/* import { toast } from "react-toastify";
 import useLoadSingleUser from "../../../../Hooks/useLoadSingleUser";
+import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner"; */
 
 const MyProfile = () => {
-  const [user] = useAuthState(auth);
-  const [singleUser, setUser] = useLoadingUserInfo(user?.email);
-  // console.log(singleUser);
+  const [user, loading] = useAuthState(auth);
+  const [userInfo, setUserInfo] = useLoadingUserInfo(user?.email);
+  /*  console.log(singleUser);
+  
+   const [user1, setUser1] = useLoadSingleUser(user?.email);
+  
+   if (loading) {
+     <LoadingSpinner></LoadingSpinner>
+   } */
 
-  const [user1, setUser1] = useLoadSingleUser(user?.email);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const address = event.target.address.value;
-    const education = event.target.education.value;
-    const phone = event.target.phone.value;
-    const linkedin = event.target.linkedin.value;
+    /*     const address = event.target.address.value;
+        const education = event.target.education.value;
+        const phone = event.target.phone.value;
+        const linkedin = event.target.linkedin.value; */
 
-    // console.log(address, education, phone, linkedin);
-
-    const updateInfo = {
-      address: address,
-      education: education,
-      phone: phone,
-      linkedin: linkedin,
-    };
-    // console.log(updateInfo);
-
-    const url = `http://localhost:5000/user/${singleUser?.email}`;
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateInfo),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("success", data);
-        toast("Information Updated!!!");
-      });
+    /*     const updateInfo = {
+          address: address.length > 0 ? address : null,
+          education: education.length > 0 ? education : null,
+          phone: phone.length > 0 ? phone : null,
+          linkedin: linkedin.length > 0 ? linkedin : null,
+        };
+    
+        if (address || education || phone || linkedin) {
+          const url = `http://localhost:5000/user/${singleUser?.email}`;
+          fetch(url, {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(updateInfo),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("success", data);
+              toast("Information Updated!!!");
+            });
+        }
+        else {
+          toast.error("Please Fill Up The Form For Updating Information")
+        } */
 
     event.target.reset();
   };
@@ -58,11 +66,11 @@ const MyProfile = () => {
       </h1>
 
       {/* table */}
-      <div class="overflow-x-auto mt-10">
-        <table class="table w-full">
+      <div className="overflow-x-auto mt-10">
+        <table className="table w-full">
           <tbody>
             {/* email*/}
-            <tr class="active">
+            <tr className="active">
               <td>
                 <strong>Email: </strong>
               </td>
@@ -73,34 +81,34 @@ const MyProfile = () => {
               <td>
                 <strong>Address: </strong>
               </td>
-              <td>{user1?.address}</td>
+              <td>{userInfo?.address}</td>
             </tr>
             {/* education*/}
-            <tr class="active">
+            <tr className="active">
               <td>
                 <strong>Education: </strong>
               </td>
-              <td>{user1?.education}</td>
+              <td>{userInfo?.education}</td>
             </tr>
             {/* phone*/}
             <tr>
               <td>
                 <strong>Phone: </strong>
               </td>
-              <td>{user1?.phone}</td>
+              <td>{userInfo?.phone}</td>
             </tr>
             {/* linkedin*/}
-            <tr class="active">
+            <tr className="active">
               <td>
                 <strong>Linkedin Profile: </strong>
               </td>
               <td>
                 <a
-                  href={user1?.linkedin}
+                  href={userInfo?.linkedin}
                   target="_blank"
                   className="text-blue-700 text-sm underline"
                 >
-                  {user1?.linkedin}
+                  {userInfo?.linkedin}
                 </a>
               </td>
             </tr>

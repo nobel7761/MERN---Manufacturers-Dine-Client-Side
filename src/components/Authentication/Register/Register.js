@@ -1,43 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Register.css";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "./../../../firebase.init";
-import {
-  useAuthState,
-  useCreateUserWithEmailAndPassword,
-  useSignInWithGoogle,
-  useUpdateProfile,
-} from "react-firebase-hooks/auth";
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth";
 import LoadingSpinner from "./../../Shared/LoadingSpinner/LoadingSpinner";
-// import SocialMediaLogin from "./../SocialMediaLogin/SocialMediaLogin";
 import { toast } from "react-toastify";
 import useToken from "../../../Hooks/useToken";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const Register = () => {
-  const [createUserWithEmailAndPassword, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
-  const [signInWithGoogle, loading1, error1] = useSignInWithGoogle(auth);
+  const [createUserWithEmailAndPassword, user1, loading, error] = useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle, gUser, loading1, error1] = useSignInWithGoogle(auth);
   const [updateProfile, updating, error2] = useUpdateProfile(auth);
   const [user] = useAuthState(auth);
-  const [token] = useToken(user);
+  /* const sendingUser = user || gUser;
+  const [token] = useToken(sendingUser); */
   const navigate = useNavigate();
 
-  let displayError;
-  if (error || error1 || error2) {
-    displayError = (
-      <p className="text-red-500 text-center"> Error: {error?.message}</p>
-    );
-  }
 
-  if (token) {
-    navigate("/");
-  }
 
-  if (loading || updating || loading1) {
-    <LoadingSpinner></LoadingSpinner>;
-  }
+
+
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -48,10 +34,37 @@ const Register = () => {
 
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName });
-    // await sendEmailVerification();
 
-    //sending information to database.
+
+
+    if (user || user1 || gUser) {
+      navigate('/')
+    }
+
+
+
+
+    if (loading || updating || loading1) {
+      <LoadingSpinner></LoadingSpinner>;
+    }
+
+    let displayError;
+    if (error || error1 || error2) {
+      displayError = (
+        <p className="text-red-500 text-center"> {error?.message}</p>
+      );
+    }
+
   };
+
+
+
+  const handleGoogle = async () => {
+    await signInWithGoogle();
+  }
+
+
+
   return (
     <div className="register-background">
       <div className="container">
@@ -111,9 +124,7 @@ const Register = () => {
         <div className="w-full flex justify-center">
           <button
             className="social-media-btn btn btn-outline mt-4 w-1/3"
-            onClick={async () => {
-              await signInWithGoogle();
-            }}
+            onClick={handleGoogle}
           >
             <FontAwesomeIcon icon={faGoogle} className="mr-4" />
             GOOGLE

@@ -2,31 +2,24 @@ import React, { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { toast } from "react-toastify";
-import {
-  useAuthState,
-  useSendPasswordResetEmail,
-  useSignInWithEmailAndPassword,
-  useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "./../../../firebase.init";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import useToken from "../../../Hooks/useToken";
-// import SocialMediaLogin from "../SocialMediaLogin/SocialMediaLogin";
 
 const Login = () => {
   const navigate = useNavigate();
 
   const emailRef = useRef("");
   const passwordRef = useRef("");
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
-  const [sendPasswordResetEmail, sending, error1] =
-    useSendPasswordResetEmail(auth);
-  const [signInWithGoogle, loading1, error2] = useSignInWithGoogle(auth);
+  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
+  const [signInWithGoogle, gUser, loading1, error2] = useSignInWithGoogle(auth);
   const [user1] = useAuthState(auth);
-  const [token] = useToken(user);
+  const sendingUser = user || gUser;
+  const [token] = useToken(sendingUser);
 
   if (token) {
     navigate("/");
