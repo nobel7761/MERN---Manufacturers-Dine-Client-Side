@@ -7,8 +7,10 @@ const Dashboard = () => {
     <div className="container">
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
-          <h2 className="text-5xl text-[#f97316]">DASHBOARD</h2>
+        <div className="drawer-content">
+          <h2 className="text-3xl text-center font-extrabold border-b-4 border-black">
+            DASHBOARD
+          </h2>
           <Outlet></Outlet>
           <label
             for="my-drawer-2"
@@ -33,27 +35,35 @@ const Dashboard = () => {
             </li>
             <li>
               <Link to="/dashboard/my-review">
-                <button className="btn btn-primary w-full">My Review</button>
+                <button className="btn btn-primary w-full">Add Review</button>
               </Link>
             </li>
             <li>
               <Link to="/dashboard/manage-all-orders">
-                <button className="btn btn-primary w-full">Manage All Orders</button>
+                <button className="btn btn-primary w-full">
+                  Manage All Orders
+                </button>
               </Link>
             </li>
             <li>
               <Link to="/dashboard/add-new-product">
-                <button className="btn btn-primary w-full">Add New Product</button>
+                <button className="btn btn-primary w-full">
+                  Add New Product
+                </button>
               </Link>
             </li>
             <li>
               <Link to="/dashboard/make-new-admin">
-                <button className="btn btn-primary w-full">Make New Admin</button>
+                <button className="btn btn-primary w-full">
+                  Make New Admin
+                </button>
               </Link>
             </li>
             <li>
               <Link to="/dashboard/manage-products">
-                <button className="btn btn-primary w-full">Manage Products</button>
+                <button className="btn btn-primary w-full">
+                  Manage Products
+                </button>
               </Link>
             </li>
           </ul>

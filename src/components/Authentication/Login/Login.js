@@ -106,7 +106,7 @@ const Login = () => {
             </p>
 
             <div className="form-button">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-primary w-1/2">Login</button>
             </div>
           </div>
         </form>

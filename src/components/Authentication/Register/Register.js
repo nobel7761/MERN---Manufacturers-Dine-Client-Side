@@ -9,6 +9,7 @@ import {
 } from "react-firebase-hooks/auth";
 import LoadingSpinner from "./../../Shared/LoadingSpinner/LoadingSpinner";
 import SocialMediaLogin from "./../SocialMediaLogin/SocialMediaLogin";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [createUserWithEmailAndPassword, loading, error] =
@@ -28,6 +29,25 @@ const Register = () => {
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName });
     // await sendEmailVerification();
+
+    //sending information to database.
+    const createUser = {
+      username: displayName,
+      email: email,
+    };
+
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(createUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast("Registered Successfully!");
+      });
   };
 
   let displayError;
@@ -95,7 +115,7 @@ const Register = () => {
             </p>
 
             <div className="form-button">
-              <button className="btn btn-primary">Register</button>
+              <button className="btn btn-primary w-1/2">Register</button>
             </div>
           </div>
         </form>
