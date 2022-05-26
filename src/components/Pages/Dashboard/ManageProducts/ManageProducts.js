@@ -3,12 +3,42 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import useLoadAllTools from '../../../../Hooks/useLoadAllTools';
 import './ManageProducts.css';
+import swal from 'sweetalert';
 
 const ManageProducts = () => {
     const [tools, setTools] = useLoadAllTools();
 
     const removeTool = id => {
+        console.log("hello", id);
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    const url = `https://pure-atoll-42866.herokuapp.com/order/${id}`;
+                    fetch(url, {
+                        method: 'DELETE',
+                    })
+                        .then(res => res.json())
+                        .then(data => {
 
+                            const restProducts = tools.filter(order => order._id !== id);
+                            setTools(restProducts)
+
+                        })
+
+
+                    swal("You have successfully deleted the order!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Order is not deleted!!!");
+                }
+            });
     }
 
     return (

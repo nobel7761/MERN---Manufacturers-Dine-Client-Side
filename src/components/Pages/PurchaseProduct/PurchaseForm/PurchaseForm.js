@@ -45,6 +45,7 @@ const PurchaseForm = ({ OrderQuantity, tool, Order }) => {
         address: address,
         totalBill: orderQuantity * tool.price,
         paymentStatus: "unpaid",
+        shipmentCondition: null,
       };
 
       fetch("https://pure-atoll-42866.herokuapp.com/order-placing", {

@@ -15,7 +15,7 @@ const MyProfile = () => {
     fetch(url)
       .then(res => res.json())
       .then(data => setProfileInfo(data));
-  }, [user, user?.email])
+  }, [user, user?.email, profileInfo])
 
   const handleSubmit = (event) => {
     event.preventDefault();

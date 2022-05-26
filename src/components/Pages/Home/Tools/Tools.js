@@ -1,10 +1,10 @@
 import React from "react";
 import "./Tools.css";
-import useLoadProducts from "../../../../Hooks/useLoadAllTools.js";
+import useLoadAllTools from "../../../../Hooks/useLoadAllTools.js";
 import Tool from "./Tool/Tool";
 
 const Tools = () => {
-  const [tools] = useLoadProducts();
+  const [tools] = useLoadAllTools();
   const length = tools.length;
   console.log(length, "length");
   return (
