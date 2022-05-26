@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../../firebase.init";
 import "./MyOrders.css";
 
 const MyOrders = () => {
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState([]);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -16,32 +16,30 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`https://pure-atoll-42866.herokuapp.com/myOrders?email=${user?.email}`, {
-        method: 'GET',
-        headers: {
-          'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      fetch(
+        `https://pure-atoll-42866.herokuapp.com/myOrders?email=${user?.email}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
         }
-      })
-        .then(res => {
-          console.log('res', res)
+      )
+        .then((res) => {
+          console.log("res", res);
           if (res.status === 401 || res.status === 403) {
-            signOut(auth)
-            localStorage.removeItem('accessToken')
-            navigate('/home')
+            signOut(auth);
+            localStorage.removeItem("accessToken");
+            navigate("/home");
           }
           return res.json();
         })
-        .then(data => {
-          console.log('orders data', data);
-          setOrders(data)
-        })
+        .then((data) => {
+          console.log("orders data", data);
+          setOrders(data);
+        });
     }
-  }, [user, navigate])
-
-
-
-
-
+  }, [user, navigate]);
 
   return (
     <div>
@@ -52,18 +50,11 @@ const MyOrders = () => {
         </span>
       </h1>
 
-
-
-
-
-
       {/* table */}
       <div className="overflow-x-auto mt-4">
         <table className="table w-full">
-
           <thead>
             <tr>
-
               <th>Product Name</th>
               <th>Ordered Quantity</th>
               <th>Total Bill</th>
@@ -73,32 +64,35 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-
-
-            {
-              orders.map(order => <tr className="active">
-
+            {orders.map((order) => (
+              <tr className="active">
                 <td>{order?.productName}</td>
                 <td className="text-center">{order?.orderQuantity}</td>
                 <td className="text-center">{order?.totalBill}</td>
                 <td className="text-center">{order?.paymentStatus}</td>
-                {order?.paymentStatus === 'unpaid' ? (
+                {order?.paymentStatus === "unpaid" ? (
                   <>
                     <td>
-                      <button className="btn bg-[#F97316] btn-sm w-full text-black hover:bg-black hover:text-[#F97316]">Let's Pay</button>
+                      <Link to={`/dashboard/payment/${order._id}`}>
+                        <button className="btn bg-[#F97316] btn-sm w-full text-black hover:bg-black hover:text-[#F97316]">
+                          Let's Pay
+                        </button>
+                      </Link>
                     </td>
                     <td className="text-center">
-                      <button><FontAwesomeIcon icon={faTrashCan} className='text-[#F97316] font-extrabold text-4xl' /></button>
+                      <button>
+                        <FontAwesomeIcon
+                          icon={faTrashCan}
+                          className="text-[#F97316] font-extrabold text-4xl"
+                        />
+                      </button>
                     </td>
                   </>
-                )
-                  :
-                  (<></>)}
-
-
-              </tr>)
-            }
-
+                ) : (
+                  <></>
+                )}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

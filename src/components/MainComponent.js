@@ -14,12 +14,13 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
 import AddReview from "./Pages/Dashboard/AddReview/AddReview";
 import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
-import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
-import AddNewProduct from './Pages/Dashboard/AddNewProduct/AddNewProduct';
-import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
-import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
+import ManageAllOrders from "./Pages/Dashboard/ManageAllOrders/ManageAllOrders";
+import AddNewProduct from "./Pages/Dashboard/AddNewProduct/AddNewProduct";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
+import ManageProducts from "./Pages/Dashboard/ManageProducts/ManageProducts";
 import RequireAuth from "./Authentication/RequireAuth/RequireAuth";
 import RequireAdmin from "./Authentication/RequireAdmin/RequireAdmin";
+import Payment from "./Pages/Dashboard/Payment";
 
 const MainComponent = () => {
   return (
@@ -35,34 +36,50 @@ const MainComponent = () => {
           path="/my-portfolio"
           element={<MyPortfolio></MyPortfolio>}
         ></Route>
-        <Route path="/dashboard" element={
-          <RequireAuth>
-            <Dashboard></Dashboard>
-          </RequireAuth>
-        }>
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard></Dashboard>
+            </RequireAuth>
+          }
+        >
           <Route index element={<MyProfile></MyProfile>} />
+          <Route path="payment/:id" element={<Payment></Payment>} />
           <Route path="my-review" element={<AddReview></AddReview>} />
           <Route path="my-orders" element={<MyOrders></MyOrders>} />
-          <Route path="manage-all-orders" element={
-            <RequireAdmin>
-              <ManageAllOrders></ManageAllOrders>
-            </RequireAdmin>
-          } />
-          <Route path="add-new-product" element={
-            <RequireAdmin>
-              <AddNewProduct></AddNewProduct>
-            </RequireAdmin>
-          } />
-          <Route path="make-new-admin" element={
-            <RequireAdmin>
-              <MakeAdmin></MakeAdmin>
-            </RequireAdmin>
-          } />
-          <Route path="manage-products" element={
-            <RequireAdmin>
-              <ManageProducts></ManageProducts>
-            </RequireAdmin>
-          } />
+          <Route
+            path="manage-all-orders"
+            element={
+              <RequireAdmin>
+                <ManageAllOrders></ManageAllOrders>
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="add-new-product"
+            element={
+              <RequireAdmin>
+                <AddNewProduct></AddNewProduct>
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="make-new-admin"
+            element={
+              <RequireAdmin>
+                <MakeAdmin></MakeAdmin>
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manage-products"
+            element={
+              <RequireAdmin>
+                <ManageProducts></ManageProducts>
+              </RequireAdmin>
+            }
+          />
         </Route>
 
         <Route
