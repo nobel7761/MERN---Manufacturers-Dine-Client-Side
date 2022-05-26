@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 const ChangeStatus = ({ id }) => {
 
     const [singleOrder, setSingleOrder] = useLoadSingleOrder(id)
+    useEffect(() => { console.log("hello") }, [id])
 
     const statusChange = id => {
         console.log("change", id);

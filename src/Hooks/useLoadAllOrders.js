@@ -7,7 +7,7 @@ const useLoadAllOrders = () => {
         fetch('https://pure-atoll-42866.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [])
+    }, [orders])
 
     return [orders, setOrders]
 }

@@ -107,7 +107,7 @@ const MyOrders = ({ setRemoveOrder }) => {
 
                       <label
                         for="remove-modal"
-                        class="btn modal-button text-[#F97316] font-extrabold text-4xl"
+                        className="btn modal-button text-[#F97316] font-extrabold text-4xl"
                         onClick={() => {
                           removeOrder(order._id)
                           setRemoveOrder(order._id)
