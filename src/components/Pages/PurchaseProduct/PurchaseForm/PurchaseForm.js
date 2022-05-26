@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../../firebase.init";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const PurchaseForm = ({ OrderQuantity, tool, Order }) => {
   const minimumOrder = tool?.min_quantity;
@@ -10,6 +10,7 @@ const PurchaseForm = ({ OrderQuantity, tool, Order }) => {
   const [user, loading, error] = useAuthState(auth);
   const [Error, setError] = useState("");
   const [Disable, setDisable] = useState(false);
+  const navigate = useNavigate();
 
   const user_name = user?.displayName;
   const user_email = user?.email;
@@ -57,6 +58,7 @@ const PurchaseForm = ({ OrderQuantity, tool, Order }) => {
         .then((data) => {
           console.log(data);
           toast("Order Placed Successfully!");
+          navigate(`/dashboard/payment/${tool._id}`);
         });
     }
 
@@ -148,20 +150,18 @@ const PurchaseForm = ({ OrderQuantity, tool, Order }) => {
               </div>
 
               <div className="form-control  mt-4">
-                <Link to={`/dashboard/payment/${tool._id}`}>
-                  <input
-                    disabled={
-                      OrderQuantity < minimumOrder ||
+
+                <button
+                  disabled={
+                    OrderQuantity < minimumOrder ||
                       AvailableQuantity < OrderQuantity
-                        ? Disable
-                        : false
-                    }
-                    type="submit"
-                    value="purchase"
-                    className="btn btn-outline"
-                  />
-                </Link>
-                {/* <button className="btn ">Place Order</button> */}
+                      ? true
+                      : false
+                  }
+                  type="submit"
+                  value="purchase"
+                  className="btn btn-outline"
+                >PURCHASE</button>
               </div>
             </form>
           </div>

@@ -2,6 +2,6 @@
     margin: 150px 0 100px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 20px;
+    row-gap: 50px;
     column-gap: 50px;
 }

@@ -86,7 +86,7 @@ const AddReview = () => {
                     placeholder="Your Rating"
                     className=""
                     name="rating"
-                    min={0}
+                    min={1}
                     max={5}
                     required />
                 </div>

@@ -34,10 +34,10 @@ const PurchaseProduct = () => {
           <div className="border-b-8 border-orange-500 w-4/5"></div>
         </h1>
         <div className="card lg:card-side bg-base-100 shadow-xl">
-          <figure>
+          <figure className="w-1/2">
             <img src={tool.picture} alt="Album" />
           </figure>
-          <div className="card-body flex flex-col justify-between bg-gray-100">
+          <div className="card-body flex flex-col justify-between w-1/2 bg-gray-100">
             <h2 className="font-bold text-center text-2xl">{tool.name}</h2>
             <div>
               <h2 className="my-2">
@@ -59,12 +59,7 @@ const PurchaseProduct = () => {
                   <sup>PER UNIT</sup>
                 </div>
               </h2>
-              <h2 className="my-4">
-                <strong>Total Sold: </strong>
-                <div className="indicator">
-                  {tool.sold}
-                </div>
-              </h2>
+
             </div>
             <div className='flex justify-center mt-4'>
               <button className='btn btn-primary mr-4' onClick={orderDecrement}>-</button>

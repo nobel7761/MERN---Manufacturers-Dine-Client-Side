@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Shared/Header/Header";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
@@ -21,8 +21,12 @@ import ManageProducts from "./Pages/Dashboard/ManageProducts/ManageProducts";
 import RequireAuth from "./Authentication/RequireAuth/RequireAuth";
 import RequireAdmin from "./Authentication/RequireAdmin/RequireAdmin";
 import Payment from "./Pages/Dashboard/Payment";
+import RemoveModal from "./Pages/RemoveModal/RemoveModal";
 
 const MainComponent = () => {
+
+  const [removeOrder, setRemoveOrder] = useState(null)
+
   return (
     <div>
       <Header></Header>
@@ -47,7 +51,8 @@ const MainComponent = () => {
           <Route index element={<MyProfile></MyProfile>} />
           <Route path="payment/:id" element={<Payment></Payment>} />
           <Route path="my-review" element={<AddReview></AddReview>} />
-          <Route path="my-orders" element={<MyOrders></MyOrders>} />
+          <Route path="my-orders" element={<MyOrders setRemoveOrder={setRemoveOrder}></MyOrders>} />
+          {removeOrder && <RemoveModal removeOrder={removeOrder}></RemoveModal>}
           <Route
             path="manage-all-orders"
             element={

@@ -5,11 +5,13 @@ import Tool from "./Tool/Tool";
 
 const Tools = () => {
   const [tools] = useLoadProducts();
-  // console.log(tools);
+  const length = tools.length;
+  console.log(length, "length");
   return (
     <div className="container">
+
       <div className="tools-container">
-        {tools.slice(0, 6).map((tool) => (
+        {tools.slice(length - 6, length).reverse().map((tool) => (
           <Tool key={tool._id} tool={tool}></Tool>
         ))}
       </div>

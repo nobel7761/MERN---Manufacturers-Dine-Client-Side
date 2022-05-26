@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../../firebase.init";
 import "./MyOrders.css";
 
-const MyOrders = () => {
+const MyOrders = ({ setRemoveOrder }) => {
   const [orders, setOrders] = useState([]);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -35,16 +35,38 @@ const MyOrders = () => {
           return res.json();
         })
         .then((data) => {
-          console.log("orders data", data);
           setOrders(data);
         });
     }
   }, [user, navigate]);
 
+
+  const removeOrder = id => {
+
+    if (decision) {
+      const url = `https://pure-atoll-42866.herokuapp.com/order/${id}`;
+      fetch(url, {
+        method: 'DELETE',
+      })
+        .then(res => res.json())
+        .then(data => {
+
+          const restProducts = orders.filter(order => order._id !== id);
+          setOrders(restProducts)
+
+        })
+    }
+
+
+
+
+
+  }
+
   return (
     <div>
       <h1 className="text-center text-3xl">
-        Hello{" "}
+        Orders of {" "}
         <span className="text-[#f97316] font-extrabold">
           {user?.displayName}
         </span>
@@ -80,16 +102,30 @@ const MyOrders = () => {
                       </Link>
                     </td>
                     <td className="text-center">
-                      <button>
+
+
+
+                      <label
+                        for="remove-modal"
+                        class="btn modal-button text-[#F97316] font-extrabold text-4xl"
+                        onClick={() => {
+                          removeOrder(order._id)
+                          setRemoveOrder(order._id)
+                        }}>
                         <FontAwesomeIcon
                           icon={faTrashCan}
                           className="text-[#F97316] font-extrabold text-4xl"
                         />
-                      </button>
+
+
+                      </label>
                     </td>
                   </>
                 ) : (
-                  <></>
+                  <>
+                    <td></td>
+                    <td></td>
+                  </>
                 )}
               </tr>
             ))}
