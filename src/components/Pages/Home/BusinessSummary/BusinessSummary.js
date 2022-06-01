@@ -8,7 +8,7 @@ import { faHandshake } from '@fortawesome/free-regular-svg-icons';
 const BusinessSummary = () => {
     return (
         <div className='bs-section'>
-            <div className="container counter">
+            <div className="w-full lg:container counter">
                 <h1 className='text-center'>MILLIONS BUSINESS TRUST US</h1>
                 <p className='text-center'>TRY TO UNDERSTAND USERS EXPECTATION</p>
                 <div className='border-b-4 border-cyan-500 w-1/2 mx-auto'></div>

@@ -14,10 +14,36 @@
   background-color: #0c85b5;
   height: 40vh;
 }
+
 .detail-section p {
   font-size: 20px;
   width: 600px;
   margin: 0 auto;
   text-align: center;
   padding-top: 3%;
+}
+
+@media screen and (max-width:480px) {
+  .about-page {
+    height: 10vh;
+  }
+
+  .about-page h1 {
+    font-size: 20px;
+
+  }
+
+  .detail-section {
+    background-color: #0c85b5;
+
+  }
+
+  .detail-section p {
+    font-size: 16px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 3%;
+  }
+
 }

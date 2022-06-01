@@ -46,3 +46,46 @@
     font-weight: bolder;
     color: #28AAA9;
 }
+
+@media screen and (max-width: 480px) {
+
+
+    .counter {
+        margin-top: 15px;
+    }
+
+    .counter h1 {
+        font-size: 16px;
+        font-weight: bolder;
+        color: #28AAA9;
+    }
+
+    .counter p {
+        font-size: 14px;
+        font-weight: 600;
+        color: white;
+    }
+
+    .counter-section {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .counter-section p {
+        text-align: center;
+        color: #28AAA9;
+    }
+
+    .counter-number {
+        font-size: 30px;
+        font-weight: bolder;
+        color: white;
+    }
+
+    .icon {
+        font-size: 50px;
+        color: #28AAA9;
+    }
+
+
+}

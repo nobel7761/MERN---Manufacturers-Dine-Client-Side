@@ -11,18 +11,18 @@ import auth from "../../../../../firebase.init";
 const NavbarTop = () => {
   const [user] = useAuthState(auth);
   return (
-    <div className="navbar-top">
+    <div className="navbar-top ">
       <div className="py-2 bg-black">
         <div className="container">
           <marquee
             text="swetha"
             className="text-center text-orange-500 text-xl"
           >
-            Thank You PROGRAMMING HERO
+            Developed By MD. HABIBUR RAHAMAN
           </marquee>
         </div>
       </div>
-      <div className="container flex justify-between items-center py-2">
+      <div className="container lg:flex justify-between items-center py-2 hidden lg:block">
         <div>
           <img src={Logo} alt="website-logo" className="w-48" />
         </div>

@@ -22,6 +22,7 @@ const Reviews = () => {
         <div className="py-16 z-0">
             <h1 className="text-center uppercase font-extrabold text-5xl pb-9">reviews</h1>
             <Swiper
+
                 slidesPerView={3.5}
                 spaceBetween={30}
                 slidesPerGroup={1}
@@ -53,7 +54,7 @@ const Reviews = () => {
 
 
             </Swiper>
-        </div>
+        </div >
     );
 };
 

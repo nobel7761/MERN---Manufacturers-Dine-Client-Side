@@ -4,22 +4,22 @@ import Nobel from "../../../images/my-portfolio/nobel.png";
 
 const MyPortfolio = () => {
   return (
-    <div>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row">
+    <div className="portfolio-container">
+      <div className="hero  bg-base-200">
+        <div className="hero-content ">
           <img
             src={Nobel}
-            className="max-w-sm rounded-lg shadow-2xl"
+            className="shadow-2xl"
             alt="devPhoto"
           />
 
-          <div className="ml-12">
+          <div className="flex flex-col ml-12">
             <h1 className="text-5xl font-bold text-center">
               Md. Habibur Rahaman Nobel
             </h1>
 
             <div className="overflow-x-auto">
-              <table className="table table-zebra w-full my-5">
+              <table className="table table-zebra  my-5 ">
                 <tbody>
                   <tr>
                     <td>

@@ -3,7 +3,7 @@ import './CrossSection.css';
 
 const CrossSection = () => {
     return (
-        <div className='container relative'>
+        <div className='container hidden lg:block relative'>
             <div className="main-section">
                 <div className='bg-[#F97316] cross-section text-center text-white yellow-section'>
                     <p>PUNCTUAL DELIVERY TIME</p>

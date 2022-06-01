@@ -19,7 +19,7 @@ const Tool = (props) => {
     <div>
       <div className="card  tool-card bg-base-100  p-5">
         <figure>
-          <img src={picture} alt="tools" />
+          <img src={picture} alt="tools" className="w-full lg:w-full" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>

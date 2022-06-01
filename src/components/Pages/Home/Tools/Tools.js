@@ -8,7 +8,7 @@ const Tools = () => {
   const length = tools.length;
   console.log(length, "length");
   return (
-    <div className="container">
+    <div className=" w-[95%] lg:w-3/4 mx-auto ">
 
       <div className="tools-container">
         {tools.slice(length - 6, length).reverse().map((tool) => (

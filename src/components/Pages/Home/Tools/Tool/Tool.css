@@ -5,3 +5,14 @@
     box-shadow: 15px 15px 30px #bebebe,
         -15px -15px 30px #ffffff;
 }
+
+@media screen and (max-width: 480px) {
+    .tool-card {
+        width: 90%;
+        margin: 0 auto;
+        border-radius: 10px;
+        background: #e0e0e0;
+        box-shadow: 15px 15px 30px #bebebe,
+            -15px -15px 30px #ffffff;
+    }
+}

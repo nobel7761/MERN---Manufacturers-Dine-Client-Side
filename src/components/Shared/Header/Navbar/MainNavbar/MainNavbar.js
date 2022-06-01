@@ -46,6 +46,9 @@ const MainNavbar = () => {
               <CustomLink to="/my-portfolio" className="p-4">
                 MY PORTFOLIO
               </CustomLink>
+              <CustomLink to="/login" className="p-4">
+                Login
+              </CustomLink>
             </ul>
           </div>
         </div>
